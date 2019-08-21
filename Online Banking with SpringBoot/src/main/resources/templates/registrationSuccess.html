@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/header :: common-header" />
+<body roleId="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<!--<head th:replace="common/header :: navbar" />-->
+<div class="container">
+    <center>
+        <span th:text="'A verification email has been sent to: ' + ${user.email}"></span>
+    </center>
+</div>
+
+
+<div th:replace="common/header :: body-bottom-scripts" />
+
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/header :: common-header"/>
+<body roleId="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<head th:replace="common/header :: navbar"/>
+<script type="text/javascript" src="/js/employee.js"></script>
+<div class="container main">
+    <br/>
+    <div class="row">
+        <form>
+            <input type="button" value="Back!" onclick="history.back()"/>
+        </form>
+        <h3>Edit Profile</h3>
+        <div class="table-responsive">
+
+
+
+
+
+
+            <form method="post" th:action="@{/admin/T2/edit}">
+                <input type="hidden" name="id" th:value="${user}"/>
+
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" th:value="${user.getFirstName()}" id="firstName"
+                                   name="firstName" roleId="firstname" placeholder="Enter your first name"
+                                   required="required"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="lastName" class="cols-sm-2 control-label">Last Name</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" th:value="${user.getLastName()}" id="lastName"
+                                   name="lastName" roleId="lastName" placeholder="Enter your last name"
+                                   required="required"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone" class="cols-sm-2 control-label">Phone</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-phone fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" th:value="${user.getPhone()}" id="phone" name="phone"
+                                   roleId="phone" placeholder="xxx-xxx-xxxx" required="required"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="cols-sm-2 control-label">Your Email</label><span
+                        class="bg-danger pull-right" th:if="${emailExists}">Email already exists</span>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-envelope fa"
+                                                                   aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" th:value="${user.getEmail()}" id="email" name="email"
+                                   roleId="email" placeholder="Enter your Email" required="required"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="username" class="cols-sm-2 control-label">Username</label><span
+                        class="bg-danger pull-right" th:if="${usernameExists}">Username already exists</span>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                            <input type="text" class="form-control" th:value="${user.getUsername()}" id="username"
+                                   name="username" roleId="username" placeholder="Enter your Username"
+                                   required="required"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group ">
+                    <button type="submit" class="btn btn-primary btn-block ">Submit Changes
+                    </button>
+                </div>
+
+            </form>
+
+
+
+
+
+        </div>
+    </div>
+</div>
+
+
+<div th:replace="common/header :: body-bottom-scripts"/>
+
+</body>
+</html>

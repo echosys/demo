@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/header :: common-header"/>
+<body roleId="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<head th:replace="common/header :: navbar"/>
+<div class="container main">
+    <br/>
+    <div class="row">
+        <form>
+            <input type="button" value="Back!" onclick="history.back()"/>
+        </form>
+        <h3>Checking Account Transactions</h3>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                    <tr>
+                        <td><strong>ID</strong></td>
+                        <td><strong>Date</strong></td>
+                        <td><strong>Description</strong></td>
+                        <td><strong>Type</strong></td>
+                        <td><strong>Status</strong></td>
+                        <td><strong>Amount</strong></td>
+                        <td><strong>Account No</strong></td>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="primarytransaction: ${PrimaryTransactionList}">
+                        <td th:text="${primarytransaction.getId()}"></td>
+                        <td th:text="${primarytransaction.getDate()}"></td>
+                        <td th:text="${primarytransaction.getDescription()}"></td>
+                        <td th:text="${primarytransaction.getType()}"></td>
+                        <td th:text="${primarytransaction.getStatus()}"></td>
+                        <td th:text="${primarytransaction.getAmount()}"></td>
+                        <td th:text="${primarytransaction.getPrimaryAccount().getAccountNumber()}"></td>
+
+                        
+                </tr>
+                </tbody>
+            </table>
+            
+            <div class="row" th:fragment="pagination">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <nav aria-label="Pagination">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item" th:each="pagenumber : ${pageNumbers}" >
+                                <a class="page-link" th:href="@{|/admin/list/${pagenumber}|}" th:text="${pagenumber}">1</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+
+
+        </div>  
+    </div>
+</div>
+
+
+<div th:replace="common/header :: body-bottom-scripts"/>
+
+</body>
+</html>

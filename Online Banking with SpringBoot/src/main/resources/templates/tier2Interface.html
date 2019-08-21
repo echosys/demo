@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/header :: common-header"/>
+<body roleId="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<head th:replace="common/header :: navbar"/>
+<div class="container main">
+    <a th:href="@{/employee/accountRequests}"><button>Additional Account Requests</button></a>&nbsp;&nbsp;&nbsp;
+    <a th:href="@{/employee/customerAccounts}"><button>Manage Customer Accounts</button></a>&nbsp;&nbsp;&nbsp;
+<!--    <a th:href="@{/employee/transactionRequests}"><button>Transaction Requests</button></a>-->
+</div>
+
+<div th:replace="common/header :: body-bottom-scripts"/>
+
+</body>
+</html>

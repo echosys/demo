@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/header :: common-header"/>
+<body roleId="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<head th:replace="common/header :: navbar"/>
+<div class="container main">
+    <br/>
+    <div class="row">
+        <h3>View Logs</h3>
+            <a th:href="@{/checkinglogs}" class="btn btn-primary eBtn">Checking Logs</a>
+            <a th:href="@{/savingslogs}" class="btn btn-primary eBtn">Saving Logs</a>
+             <a th:href="@{/admin/syslogs}" class="btn btn-primary eBtn">System Logs</a>
+        <h3>List of Employees</h3>
+        <div class="table-responsive">
+            <a th:href="@{/admin/signup_admin}" class="btn btn-primary eBtn">Create Employee</a>
+            
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                    <tr>
+                        <td><strong>User ID</strong></td>
+                        <td><strong>First Name</strong></td>
+                        <td><strong>Last Name</strong></td>
+                        <td><strong>Email</strong></td>
+                        <td><strong>PhoneNumber</strong></td>
+                        <td><strong>Username</strong></td>
+                        <td><strong>UserType</strong></td>
+                        
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="employee: ${EmployeeList}">
+                        <td th:text="${employee.getUserId()}"></td>
+                        <td th:text="${employee.getFirstName()}"></td>
+                        <td th:text="${employee.getLastName()}"></td>
+                        <td th:text="${employee.getEmail()}"></td>
+                        <td th:text="${employee.getPhone()}"></td>
+                        <td th:text="${employee.getUsername()}"></td>
+                        <td th:text="${employee.getUserTypeId()}"></td>
+                        <td><a th:attr="name=${employee.getUserId()}" th:href="@{/admin/edit?employeename=}+${employee.getUsername()}" class="btn btn-primary eBtn">Modify</a></td>
+                        <td><a th:href="@{/admin/delete?employeename=}+${employee.getUsername()}" class="btn btn-primary eBtn" >delete</a></td>
+                </tr>
+                </tbody>
+            </table>
+            
+            <div class="row" th:fragment="pagination">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <nav aria-label="Pagination">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item" th:each="pagenumber : ${pageNumbers}" >
+                                <a class="page-link" th:href="@{|/admin/list/${pagenumber}|}" th:text="${pagenumber}">1</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+
+
+        </div>  
+    </div>
+</div>
+
+
+<div th:replace="common/header :: body-bottom-scripts"/>
+
+</body>
+</html>

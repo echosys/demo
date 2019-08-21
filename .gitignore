@@ -14,6 +14,21 @@ chrome-mac/
 chrome-win/
 
 #################
+## Pycharm
+#################
+.idea
+.idea/*.xml
+.idea/*
+*/.idea/*
+.idea/vcs.xml
+
+#################
+## demoenv
+demoenv/
+smtpgmail.txt
+smtpemail.txt
+
+#################
 ## Eclipse
 #################
 

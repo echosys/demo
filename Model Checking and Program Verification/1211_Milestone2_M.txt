@@ -1,0 +1,5 @@
+% Input alphabet 
+% Specification automaton 
+% Transition function 
+% Initial state 
+% Final states 

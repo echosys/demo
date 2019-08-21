@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/header :: common-header"/>
+<body roleId="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<head th:replace="common/header :: navbar"/>
+<div class="container main">
+    <br/>
+    <div class="row">
+        <h3>Additional Account Requests</h3>
+        <div class="table-responsive">
+
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                <tr>
+                    <td><strong>User ID</strong></td>
+                    <td><strong>First Name</strong></td>
+                    <td><strong>Last Name</strong></td>
+                    <td><strong>PhoneNumber</strong></td>
+                    <td><strong>Username</strong></td>
+                    <td><strong>UserType</strong></td>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="request: ${account_requests}">
+                    <td th:text="${request.getUserId()}"></td>
+                    <td th:text="${request.getFirstName()}"></td>
+                    <td th:text="${request.getLastName()}"></td>
+                    <td th:text="${request.getPhone()}"></td>
+                    <td th:text="${request.getUsername()}"></td>
+                    <td th:text="${request.getUserTypeId()}"></td>
+
+                    <td><a th:href="@{/employee/approveRequests?name=}+${request.getUsername()}" class="btn btn-primary eBtn">Approve</a></td>
+
+                </tr>
+                </tbody>
+            </table>
+
+
+            <h3>Approved Account Requests</h3>
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-hover table-striped">
+                    <thead>
+                    <tr>
+                        <td><strong>User ID</strong></td>
+                        <td><strong>First Name</strong></td>
+                        <td><strong>Last Name</strong></td>
+                        <td><strong>PhoneNumber</strong></td>
+                        <td><strong>Username</strong></td>
+                        <td><strong>UserType</strong></td>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="request: ${approved_requests}">
+                        <td th:text="${request.getUserId()}"></td>
+                        <td th:text="${request.getFirstName()}"></td>
+                        <td th:text="${request.getLastName()}"></td>
+                        <td th:text="${request.getPhone()}"></td>
+                        <td th:text="${request.getUsername()}"></td>
+                        <td th:text="${request.getUserTypeId()}"></td>
+
+                    </tr>
+                    </tbody>
+                </table>
+
+
+                <div class="row" th:fragment="pagination">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <nav aria-label="Pagination">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item" th:each="pagenumber : ${pageNumbers}" >
+                                <a class="page-link" th:href="@{|/admin/list/${pagenumber}|}" th:text="${pagenumber}">1</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-md-2"></div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+<div th:replace="common/header :: body-bottom-scripts"/>
+</div>
+</body>
+</html>
