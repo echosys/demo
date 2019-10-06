@@ -1,0 +1,26 @@
+<html>
+    <head> 
+        <link rel="stylesheet" type="text/css" href="styles.css">
+    </head>
+
+    <body>
+        <svg class='flow'/>
+        <svg class='scatter'/>
+    </body>
+    
+    <div class='control'>
+        <span class='tickCount'># of data updates: 0</span>
+        <input id='doOneUpdate' type='button' value='Run 1 Update'/>
+        
+        <input id='continuousUpdate' type='checkbox'/>
+        <label for='continuousUpdate'>Continuous update (1s interval): </label>
+    </div>
+
+    <script src='./scripts/seedrandom.js'></script>
+    <script src='./scripts/d3.js'></script>
+    <script src='./scripts/flowDiagram.js'></script>
+    <script src='./scripts/scatterPlot.js'></script>
+    <script src='./scripts/index.js'></script>
+    <script src='./scripts/dataFlow.js'></script>
+
+</html>
